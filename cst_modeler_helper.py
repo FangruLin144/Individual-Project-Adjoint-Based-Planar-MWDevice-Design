@@ -36,3 +36,23 @@ def define_brick(modeler,
                'End With']
     s_brick = '\n'.join(s_brick)
     modeler.add_to_history(f'define brick:{component_name}:{brick_name}', s_brick)
+
+def mirror_objects(modeler, object_name: str):
+    s_mirror = ['With Transform',
+                '.Reset',
+                f'.Name "{object_name}"',
+                f'.Origin "Free"',
+                f'.Center "0", "0", "0"',
+                f'.PlaneNormal "1", "0", "0"',
+                f'.MultipleObjects "True"',
+                f'.GroupObjects "False"',
+                f'.Repetitions "1"',
+                f'.MultipleSelection "True"',
+                f'.Destination ""',
+                f'.Material ""',
+                f'.AutoDestination "True"',
+                f'.Transform "Shape", "Mirror"',
+                'End With']
+    s_mirror = '\n'.join(s_mirror)
+    modeler.add_to_history(f'mirror object:{object_name}', s_mirror)
+
