@@ -75,7 +75,7 @@ Y3_individual_project/
 │
 ├── interface_setup/            # CST COM config and test notebooks
 │   ├── cst_package_setup.ipynb
-│   └── cst_test.ipynb
+│   ├── cst_test.ipynb
 │   └── example                          # An example CST project to test environment configuration
 │
 ├── tools/                      # Auxiliary tools for inspecting and analyzing simulation results
