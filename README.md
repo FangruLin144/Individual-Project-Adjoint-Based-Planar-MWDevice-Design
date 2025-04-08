@@ -8,7 +8,7 @@ This framework automates and acclerates the design of planar microwave structure
 
 ## Overview
 
-![Workflow Diagram](workflow.png)
+![Workflow Diagram](methodology_workflow.png)
 
 The diagram shows the overall pipeline:
 
@@ -69,13 +69,14 @@ Y3_individual_project/
 │   ├── filters/                         # Manufacturability post-processing tools
 │   │   ├── filter.py                    # Applies smoothing to geometry, including Gaussian filters
 │
-│── results/                    # Output field results
+│── results/                    # Stores field results across iterations
 │
 │── shape_history/              # Stores shape evolution across iterations
 │
-├── interface_setup/            # CST COM test and config notebooks
+├── interface_setup/            # CST COM config and test notebooks
 │   ├── cst_package_setup.ipynb
 │   └── cst_test.ipynb
+│   └── example                          # An example CST project to test environment configuration
 │
 ├── tools/                      # Auxiliary tools for inspecting and analyzing simulation results
 │   ├── view_e_field.ipynb               # Extracting and visualizing electric fields with time-domain solvers
@@ -85,9 +86,7 @@ Y3_individual_project/
 │   ├── extract_s_parameters.ipynb       # Extracting and visualizing S parameters throughout iterations
 ```
 
-## Technical Details
-
-### Equations
+## Key Equations for the Framework
 
 - **Adjoint-based shape derivative:**
 
@@ -106,14 +105,6 @@ Y3_individual_project/
   ```math
   G(x) = \frac{1}{2\pi \sigma^2} \exp\left( -\frac{x^2}{2\sigma^2} \right)
   ```
-
-### Key Files
-
-- `run_optimization.py` — Entry point for full pipeline  
-- `cst_wrapper/` — CST COM interface  
-- `optimizer/` — Level set evolution and gradient calculations  
-- `filters/` — Gaussian smoothing tools  
-- `examples/` — Baseline CST project and configuration
 
 ## Known Issues and Future Improvements
 
