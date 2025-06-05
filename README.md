@@ -120,11 +120,11 @@ Individual-Project-Adjoint-Based-Planar-MWDevice-Design/
 
 This project opens up several directions for further development:
 
-- Integration of Practical EM Constraints
+- **Integration of Practical EM Constraints**
 
-  Future iterations can incorporate additional electromagnetic constraints—such as impedance matching or bandwidth targets—directly into the objective function. This would enable more robust, application-aware optimization outcomes without relying on manual filtering or tuning.
+  Future iterations can incorporate additional electromagnetic constraints — such as impedance matching or bandwidth targets — directly into the objective function. This would enable more robust, application-aware optimization outcomes without relying on manual filtering or tuning.
 
-- Adjoint-Enhanced Surrogate Optimization
+- **Adjoint-Enhanced Surrogate Optimization**
 
   Surrogate-based optimizers like the Trust Region Framework (TRF) can be improved using adjoint-derived gradients. Since adjoint methods provide highly efficient and accurate sensitivity information, they can correct local surrogate models and support multi-directional exploration, improving convergence and reducing sensitivity to local minima.
 
