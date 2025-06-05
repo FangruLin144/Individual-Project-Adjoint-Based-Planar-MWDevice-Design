@@ -1,0 +1,12 @@
+# macOS system files
+.DS_Store
+
+# Build files
+*.o
+*.out
+*.bin
+build/
+
+# IDE settings
+.vscode/
+*.code-workspace
