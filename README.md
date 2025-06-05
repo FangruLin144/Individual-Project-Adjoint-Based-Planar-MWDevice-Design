@@ -8,7 +8,7 @@ This framework automates and acclerates the design of planar microwave structure
 
 ## Overview
 
-![Workflow Diagram](methodology_workflow.png)
+![Workflow Diagram](pics/methodology_workflow.png)
 
 The diagram shows the overall pipeline:
 
@@ -23,8 +23,8 @@ The diagram shows the overall pipeline:
 1. **Clone this repository:**
 
    ```bash
-   git clone https://github.com/FangruLin144/Y3_individual_project.git
-   cd Y3_individual_project
+   git clone https://github.com/FangruLin144/Individual-Project-Adjoint-Based-Planar-MWDevice-Design.git
+   cd Individual-Project-Adjoint-Based-Planar-MWDevice-Design
    ```
 
 2. **Install Python dependencies:**
@@ -50,15 +50,17 @@ The diagram shows the overall pipeline:
 Here is an overview of the framework structure and essential tools to properly implement the framework. 
 
 ```
-Y3_individual_project/
+Individual-Project-Adjoint-Based-Planar-MWDevice-Design/
 │
 ├── README.md
+│
+├── pics/                       # Pictures used for README file
 │
 ├── main.ipynb                  # Top-level notebook to launch and explain the workflow
 │
 ├── src/                        # Core optimization pipeline
 │   ├── optimizer/                       # Optimization engine (level set and sensitivity logic)
-│   │   ├── level_set_engine.py          # Handles level set evolution and shape updates
+│   │   └── level_set_engine.py          # Handles level set evolution and shape updates
 │
 │   ├── cst_interface/                   # CST-related scripting and model interfacing
 │   │   ├── geometry_interface.py        # CST model construction and updates
@@ -67,7 +69,7 @@ Y3_individual_project/
 │   │   └── project_cloner.py            # File duplication and template preparation
 │
 │   ├── filters/                         # Manufacturability post-processing tools
-│   │   ├── filter.py                    # Applies smoothing to geometry, including Gaussian filters
+│   │   └── filter.py                    # Applies smoothing to geometry, including Gaussian filters
 │
 │── results/                    # Stores field results across iterations
 │
@@ -83,16 +85,14 @@ Y3_individual_project/
 │   ├── view_h_field.ipynb               # Extracting and visualizing magnetic fields with time-domain solvers
 │   ├── view_e_field_fsolver.ipynb       # Extracting and visualizing electric fields with frequency-domain solvers
 │   ├── view_h_field_fsolver.ipynb       # Extracting and visualizing magnetic fields with frequency-domain solvers
-│   ├── extract_s_parameters.ipynb       # Extracting and visualizing S parameters throughout iterations
+│   └── extract_s_parameters.ipynb       # Extracting and visualizing S parameters throughout iterations
 ```
 
 ## Key Equations for the Framework
 
 - **Adjoint-based shape derivative:**
 
-  ```math
-  \frac{d \mathcal{L}}{d \boldsymbol{p}} = \frac{dJ}{d\boldsymbol{p}} = \Re \left\{ -j\omega \int_{\Gamma_{\text{PEC}}} \left( \varepsilon \boldsymbol{E} \cdot \boldsymbol{E}^{\text{adj}} + \mu \boldsymbol{H} \cdot \boldsymbol{H}^{\text{adj}} \right) \, ds \right\}
-  ```
+  ![Adjoint Equation](pics/adjoint_shape_derivative.svg)
 
 - **Level set boundary evolution:**
 
@@ -118,14 +118,20 @@ Y3_individual_project/
 
 ## Future Plans
 
-- Automate CST field data extraction
+This project opens up several directions for further development:
 
-- Parallelize CST simulation calls
+- Integration of Practical EM Constraints
 
-- Integrate filtering into the optimization loop
+Future iterations can incorporate additional electromagnetic constraints—such as impedance matching or bandwidth targets—directly into the objective function. This would enable more robust, application-aware optimization outcomes without relying on manual filtering or tuning.
 
-- Improve directory abstraction for broader device compatibility
+- Adjoint-Enhanced Surrogate Optimization
+
+Surrogate-based optimizers like the Trust Region Framework (TRF) can be improved using adjoint-derived gradients. Since adjoint methods provide highly efficient and accurate sensitivity information, they can correct local surrogate models and support multi-directional exploration, improving convergence and reducing sensitivity to local minima.
 
 ## Contact
 
 Please raise issues or suggestions through the [GitHub Issues tab](https://github.com/FangruLin144/Y3_individual_project/issues).
+
+## Acknowledgements
+
+This is a bespoke project benefited greatly from the guidance of **Prof. Zhirun Hu** on microwave device design, as well as insights from **Dr. Francis Watson**, **Dr. Michael O’Toole** and **Dr. Joel Loh** on numerical optimization and electromagnetic simulation. I would also like to thank **Mr. Zirui Zhang** and **Miss Zizhen Zhang** for their help in device testing and feedback.
